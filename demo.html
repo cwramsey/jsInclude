@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jsInclude Demo</title>
+    <script type="text/javascript" src="jsInclude.js"></script>
+    <script type="text/javascript">
+
+        //You can also use JsInclude.footer() to load
+        //your files into the end of your <body> tag
+        JsInclude.header({
+            folder: "demoJS",
+            files: [
+                "demo.js",
+                "demo2.js"
+            ]
+        }, function () {
+            alert("loaded ok");
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

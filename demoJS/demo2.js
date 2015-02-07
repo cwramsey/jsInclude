@@ -1,0 +1,1 @@
+alert("demo2.js loaded successfully");
