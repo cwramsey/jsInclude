@@ -27,7 +27,7 @@ var JsInclude = (function(document) {
           script.onload = function() {
             if (--callbacks === 0) callback();
           };
-          script.src = files.folder + "/" + val;
+          script.src = files.folder + '/' + val;
           body.appendChild(script);
         });
       }
