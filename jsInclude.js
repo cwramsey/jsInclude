@@ -13,7 +13,12 @@ var JsInclude = (function(document) {
     },
 
     appendTo(element, bundle, callback) {
-      window.onload = function(){
+      if (document.readyState === 'complete') {
+        injectScripts();
+      } else {
+        window.addEventListener('load', injectScripts);
+      }
+      function injectScripts(){
         bundle.files.forEach(function(val) {
           var script = document.createElement('script');
           script.type = 'text/javascript';
@@ -25,7 +30,7 @@ var JsInclude = (function(document) {
           script.src = files.folder + "/" + val;
           body.appendChild(script);
         });
-      };
+      }
     }
   };
 })(document);
