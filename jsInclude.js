@@ -1,24 +1,26 @@
-var JsInclude = (function(document) {
+var JsInclude = (function(files) {
   var callbacks = 0;
+  element: undefined;
 
   return {
     header: function(bundle, callback) {
-      var head = document.getElementsByTagName('head')[0];
-      appendTo(head, bundle, callback);
+      JsInclude.element = document.getElementsByTagName('head')[0];
+      this.appendTo(JsInclude.element, bundle, callback);
     },
 
     footer: function(bundle, callback) {
-      var body = document.getElementsByTagName('body')[0];
-      appendTo(body, bundle, callback);
+      JsInclude.element = document.getElementsByTagName('body')[0];
+      this.appendTo(JsInclude.element, bundle, callback);
     },
 
-    appendTo(element, bundle, callback) {
+    appendTo: function(element, bundle, callback) {
       if (document.readyState === 'complete') {
         injectScripts();
       } else {
         window.addEventListener('load', injectScripts);
       }
       function injectScripts(){
+        console.log(bundle);
         bundle.files.forEach(function(val) {
           var script = document.createElement('script');
           script.type = 'text/javascript';
@@ -27,8 +29,8 @@ var JsInclude = (function(document) {
           script.onload = function() {
             if (--callbacks === 0) callback();
           };
-          script.src = files.folder + '/' + val;
-          body.appendChild(script);
+          script.src = bundle.folder + '/' + val;
+          element.appendChild(script);
         });
       }
     }
