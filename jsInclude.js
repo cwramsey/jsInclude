@@ -1,16 +1,16 @@
 var JsInclude = (function(files) {
   var callbacks = 0;
-  element: undefined;
+  var element = undefined;
 
   return {
     header: function(bundle, callback) {
-      JsInclude.element = document.getElementsByTagName('head')[0];
-      this.appendTo(JsInclude.element, bundle, callback);
+      element = document.getElementsByTagName('head')[0];
+      this.appendTo(element, bundle, callback);
     },
 
     footer: function(bundle, callback) {
-      JsInclude.element = document.getElementsByTagName('body')[0];
-      this.appendTo(JsInclude.element, bundle, callback);
+      element = document.getElementsByTagName('body')[0];
+      this.appendTo(element, bundle, callback);
     },
 
     appendTo: function(element, bundle, callback) {
