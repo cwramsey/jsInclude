@@ -1,15 +1,14 @@
 var JsInclude = (function(files) {
   var callbacks = 0;
-  var element = undefined;
 
   return {
     header: function(bundle, callback) {
-      element = document.getElementsByTagName('head')[0];
+      var element = document.getElementsByTagName('head')[0];
       this.appendTo(element, bundle, callback);
     },
 
     footer: function(bundle, callback) {
-      element = document.getElementsByTagName('body')[0];
+      var element = document.getElementsByTagName('body')[0];
       this.appendTo(element, bundle, callback);
     },
 
