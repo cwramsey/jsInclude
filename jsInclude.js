@@ -1,4 +1,4 @@
-var JsInclude = (function(files) {
+var JsInclude = (function(document) {
   var callbacks = 0;
 
   return {
